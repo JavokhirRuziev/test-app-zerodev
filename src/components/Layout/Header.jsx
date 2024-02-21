@@ -83,7 +83,7 @@ export default function HideAppBar(props) {
               }}
             >
               {thousandsDivider(totalIncome - totalExpense)}
-              &nbsp;sum &nbsp;&nbsp;
+              &nbsp;$ &nbsp;&nbsp;
             </Typography>
           </StyledToolbar>
         </AppBar>

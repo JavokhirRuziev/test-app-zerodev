@@ -86,7 +86,7 @@ export default function CustomizedTables({
               <TableRow>
                 <StyledTableCell>Name</StyledTableCell>
                 <StyledTableCell align="right">Category</StyledTableCell>
-                <StyledTableCell align="right">Amount (sum)</StyledTableCell>
+                <StyledTableCell align="right">Amount ($)</StyledTableCell>
                 <StyledTableCell align="right">Date</StyledTableCell>
                 <StyledTableCell align="right">
                   <Button variant="contained" size="large" onClick={onCreate}>
@@ -200,7 +200,7 @@ export default function CustomizedTables({
                       color="text.secondary"
                       gutterBottom
                     >
-                      Amount (sum)
+                      Amount ($)
                     </Typography>{" "}
                     <Typography
                       sx={{ fontSize: 14 }}

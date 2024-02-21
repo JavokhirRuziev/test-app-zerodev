@@ -40,9 +40,6 @@ export default ({ setShowEdit, selected }) => {
             if (!values[value]) {
               errors[value] = "Required!";
             }
-            if (values[value]?.length < 3) {
-              errors[value] = "Too short!";
-            }
           }
           return errors;
         }}
@@ -56,10 +53,8 @@ export default ({ setShowEdit, selected }) => {
         }}
       >
         {({ isSubmitting }) => {
-          // console.log(values);
           return (
             <>
-              {/* {isSubmitting && <Linier />} */}
               <Form>
                 <Wrapper>
                   <Field
@@ -82,7 +77,7 @@ export default ({ setShowEdit, selected }) => {
                     type="text"
                     name="amount"
                     placeholder="Enter amount"
-                    label="Amount (sum)"
+                    label="Amount ($)"
                   />
                   <Field
                     component={Base}

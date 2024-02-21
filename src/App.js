@@ -1,6 +1,5 @@
 import Header from "./components/Layout/Header";
-import Chart from "./components/Charts/Chart";
-import { Box, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 import styled from "styled-components";
 import { useSelector } from "react-redux";
 import BarChart from "./components/Charts/BarChart";
@@ -20,9 +19,16 @@ function App() {
   );
 
   const chartData = [
-    { id: 0, value: totalIncome, label: `Incomes` },
-    { id: 1, value: totalExpense, label: `Expenses` },
+    {
+      label: "Incomes",
+      data: [totalIncome],
+    },
+    {
+      label: "Expenses",
+      data: [totalExpense],
+    },
   ];
+
   const ChartWrapper = styled(Box)(({ theme }) => ({
     display: "flex",
     justifyContent: "center",
@@ -31,8 +37,7 @@ function App() {
   return (
     <Header>
       <ChartWrapper>
-        <Chart {...{ chartData }} />
-        {/* <BarChart {...{ chartData }} /> */}
+        <BarChart {...{ chartData }} />
       </ChartWrapper>
     </Header>
   );
