@@ -86,7 +86,7 @@ export default function CustomizedTables({
               <TableRow>
                 <StyledTableCell>Name</StyledTableCell>
                 <StyledTableCell align="right">Category</StyledTableCell>
-                <StyledTableCell align="right">Amount ($)</StyledTableCell>
+                <StyledTableCell align="right">Amount</StyledTableCell>
                 <StyledTableCell align="right">Date</StyledTableCell>
                 <StyledTableCell align="right">
                   <Button variant="contained" size="large" onClick={onCreate}>
@@ -95,7 +95,6 @@ export default function CustomizedTables({
                 </StyledTableCell>
               </TableRow>
             </TableHead>
-
             <TableBody>
               {arr?.map((row) => (
                 <StyledTableRow key={row.name}>
@@ -106,7 +105,7 @@ export default function CustomizedTables({
                     {row.category?.label}
                   </StyledTableCell>
                   <StyledTableCell align="right">
-                    {thousandsDivider(row.amount)}
+                    {thousandsDivider(row.amount)}$
                   </StyledTableCell>
                   <StyledTableCell align="right">{row.date}</StyledTableCell>
                   <StyledTableCell align="right">
