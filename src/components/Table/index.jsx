@@ -7,7 +7,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { Add, Edit, PlusOne, Remove } from "@mui/icons-material";
+import { Add, Edit, Remove } from "@mui/icons-material";
 import {
   Box,
   Button,
@@ -20,6 +20,7 @@ import {
   useMediaQuery,
 } from "@mui/material";
 import thousandsDivider from "../../utils/thousandsDivider/thousandsDivider";
+import { ReactComponent as Empty } from "../assest/icons/empty.svg";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -60,7 +61,12 @@ const MobileWrapper = styled(Box)(({}) => ({
 const TextWrapper = styled(Box)(() => ({
   display: "flex",
   justifyContent: "space-between",
-  width: "100%",
+}));
+
+const EmptyWrapper = styled(Box)(() => ({
+  margin: "20px 0px",
+  display: "flex",
+  justifyContent: "center",
 }));
 
 export default function CustomizedTables({
@@ -89,6 +95,7 @@ export default function CustomizedTables({
                 </StyledTableCell>
               </TableRow>
             </TableHead>
+
             <TableBody>
               {arr?.map((row) => (
                 <StyledTableRow key={row.name}>
@@ -134,95 +141,111 @@ export default function CustomizedTables({
               ))}
             </TableBody>
           </Table>
+          {arr?.length < 1 && (
+            <EmptyWrapper>
+              <Empty
+                style={{ width: "500px", maxHeight: "250px", height: "100%" }}
+              />
+            </EmptyWrapper>
+          )}
         </TableContainer>
       ) : (
-        <MobileWrapper>
-          {arr?.map((row) => (
-            <Card sx={{ maxWidth: 570, width: "100%", minWidth: 275 }}>
-              <CardContent>
-                <TextWrapper>
-                  <Typography
-                    sx={{ fontSize: 14, fontWeight: "bold" }}
-                    color="text.secondary"
-                    gutterBottom
-                  >
-                    Name
-                  </Typography>{" "}
-                  <Typography
-                    sx={{ fontSize: 14 }}
-                    color="text.secondary"
-                    gutterBottom
-                  >
-                    {row.name}
-                  </Typography>
-                </TextWrapper>
-                <TextWrapper>
-                  <Typography
-                    sx={{ fontSize: 14, fontWeight: "bold" }}
-                    color="text.secondary"
-                    gutterBottom
-                  >
-                    Category
-                  </Typography>{" "}
-                  <Typography
-                    sx={{ fontSize: 14 }}
-                    color="text.secondary"
-                    gutterBottom
-                  >
-                    {row.category?.label}
-                  </Typography>
-                </TextWrapper>
-                <TextWrapper>
-                  <Typography
-                    sx={{ fontSize: 14, fontWeight: "bold" }}
-                    color="text.secondary"
-                    gutterBottom
-                  >
-                    Amount (sum)
-                  </Typography>{" "}
-                  <Typography
-                    sx={{ fontSize: 14 }}
-                    color="text.secondary"
-                    gutterBottom
-                  >
-                    {thousandsDivider(row.amount)}
-                  </Typography>
-                </TextWrapper>
-                <TextWrapper>
-                  <Typography
-                    sx={{ fontSize: 14, fontWeight: "bold" }}
-                    color="text.secondary"
-                    gutterBottom
-                  >
-                    Date
-                  </Typography>{" "}
-                  <Typography
-                    sx={{ fontSize: 14 }}
-                    color="text.secondary"
-                    gutterBottom
-                  >
-                    {row.date}
-                  </Typography>
-                </TextWrapper>
-              </CardContent>
-              <CardActions>
-                <TextWrapper>
-                  <Button variant="contained" size="small" onClick={onCreate}>
-                    <Add />
-                  </Button>
-                  <Box>
-                    <IconButton color="primary" onClick={() => onRemove(row)}>
-                      <Remove />
-                    </IconButton>
-                    <IconButton color="secondary" onClick={() => onEdit(row)}>
-                      <Edit />
-                    </IconButton>
-                  </Box>
-                </TextWrapper>
-              </CardActions>
-            </Card>
-          ))}
-        </MobileWrapper>
+        <>
+          {arr?.length < 1 && (
+            <EmptyWrapper>
+              <Empty
+                style={{ width: "500px", maxHeight: "250px", height: "100%" }}
+              />
+            </EmptyWrapper>
+          )}
+          <MobileWrapper>
+            {arr?.map((row) => (
+              <Card sx={{ maxWidth: 570, width: "100%", minWidth: 275 }}>
+                <CardContent>
+                  <TextWrapper>
+                    <Typography
+                      sx={{ fontSize: 14, fontWeight: "bold" }}
+                      color="text.secondary"
+                      gutterBottom
+                    >
+                      Name
+                    </Typography>{" "}
+                    <Typography
+                      sx={{ fontSize: 14 }}
+                      color="text.secondary"
+                      gutterBottom
+                    >
+                      {row.name}
+                    </Typography>
+                  </TextWrapper>
+                  <TextWrapper>
+                    <Typography
+                      sx={{ fontSize: 14, fontWeight: "bold" }}
+                      color="text.secondary"
+                      gutterBottom
+                    >
+                      Category
+                    </Typography>{" "}
+                    <Typography
+                      sx={{ fontSize: 14 }}
+                      color="text.secondary"
+                      gutterBottom
+                    >
+                      {row.category?.label}
+                    </Typography>
+                  </TextWrapper>
+                  <TextWrapper>
+                    <Typography
+                      sx={{ fontSize: 14, fontWeight: "bold" }}
+                      color="text.secondary"
+                      gutterBottom
+                    >
+                      Amount (sum)
+                    </Typography>{" "}
+                    <Typography
+                      sx={{ fontSize: 14 }}
+                      color="text.secondary"
+                      gutterBottom
+                    >
+                      {thousandsDivider(row.amount)}
+                    </Typography>
+                  </TextWrapper>
+                  <TextWrapper>
+                    <Typography
+                      sx={{ fontSize: 14, fontWeight: "bold" }}
+                      color="text.secondary"
+                      gutterBottom
+                    >
+                      Date
+                    </Typography>{" "}
+                    <Typography
+                      sx={{ fontSize: 14 }}
+                      color="text.secondary"
+                      gutterBottom
+                    >
+                      {row.date}
+                    </Typography>
+                  </TextWrapper>
+                </CardContent>
+                <CardActions>
+                  <TextWrapper>
+                    <Button variant="contained" size="small" onClick={onCreate}>
+                      <Add />
+                    </Button>
+                    <Box>
+                      <IconButton color="primary" onClick={() => onRemove(row)}>
+                        <Remove />
+                      </IconButton>
+                      <IconButton color="secondary" onClick={() => onEdit(row)}>
+                        <Edit />
+                      </IconButton>
+                    </Box>
+                  </TextWrapper>
+                </CardActions>
+              </Card>
+            ))}
+          </MobileWrapper>
+        </>
       )}
     </>
   );

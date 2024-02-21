@@ -3,6 +3,7 @@ import Chart from "./components/Charts/Chart";
 import { Box, Typography } from "@mui/material";
 import styled from "styled-components";
 import { useSelector } from "react-redux";
+import BarChart from "./components/Charts/BarChart";
 
 function App() {
   const incomes = useSelector((state) => state.incomes.incomes);
@@ -31,6 +32,7 @@ function App() {
     <Header>
       <ChartWrapper>
         <Chart {...{ chartData }} />
+        {/* <BarChart {...{ chartData }} /> */}
       </ChartWrapper>
     </Header>
   );

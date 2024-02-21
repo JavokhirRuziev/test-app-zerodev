@@ -1,6 +1,5 @@
 import { useMediaQuery } from "@mui/material";
 import { PieChart } from "@mui/x-charts/PieChart";
-import { useSelector } from "react-redux";
 
 export default ({ chartData }) => {
   const mobile = useMediaQuery((theme) => theme.breakpoints.down("tablet"));
