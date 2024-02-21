@@ -151,11 +151,31 @@ export default function CustomizedTables({
       ) : (
         <>
           {arr?.length < 1 && (
-            <EmptyWrapper>
-              <Empty
-                style={{ width: "500px", maxHeight: "250px", height: "100%" }}
-              />
-            </EmptyWrapper>
+            <MobileWrapper>
+              <Card sx={{ maxWidth: 570, width: "100%", minWidth: 275 }}>
+                <CardContent>
+                  <EmptyWrapper>
+                    <Empty
+                      style={{
+                        width: "500px",
+                        maxHeight: "250px",
+                        height: "100%",
+                      }}
+                    />
+                  </EmptyWrapper>
+                </CardContent>
+                <CardActions>
+                  <Button
+                    variant="contained"
+                    size="small"
+                    onClick={onCreate}
+                    sx={{ mr: "auto" }}
+                  >
+                    <Add />
+                  </Button>
+                </CardActions>
+              </Card>
+            </MobileWrapper>
           )}
           <MobileWrapper>
             {arr?.map((row) => (
@@ -227,7 +247,13 @@ export default function CustomizedTables({
                   </TextWrapper>
                 </CardContent>
                 <CardActions>
-                  <TextWrapper>
+                  <Box
+                    sx={{
+                      display: "flex",
+                      justifyContent: "space-between",
+                      width: "100%",
+                    }}
+                  >
                     <Button variant="contained" size="small" onClick={onCreate}>
                       <Add />
                     </Button>
@@ -239,7 +265,7 @@ export default function CustomizedTables({
                         <Edit />
                       </IconButton>
                     </Box>
-                  </TextWrapper>
+                  </Box>
                 </CardActions>
               </Card>
             ))}
